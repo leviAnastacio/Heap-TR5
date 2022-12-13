@@ -9,12 +9,14 @@ int myCOMP(void* x, void* y){
 	if(ptx - pty < 5){
 		return -1;
 	}else{
-		if(ptx - pty > 5) return 1;
-		else return 0;
+		if(ptx - pty > 5) 
+			return 1;
+		else 
+			return 0;
 	}
 }
 
-//Print para a estrutura
+//Função de imprimir os elementos teste da heap.
 void print(void** vet, int P){
 	int i;
 	printf("VETOR DE %d TAMANHO:\n", P);
