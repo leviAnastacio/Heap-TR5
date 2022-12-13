@@ -53,7 +53,7 @@ static void heap_descida(void **elems, int P, COMP *comparador)
 HEAP* HEAP_create(int n, COMP* compara)
 {
     
-    HEAP* heap = malloc(sizeof(HEAP));//alocação de memória de um ponteiro do tipo definido HEAP.
+    HEAP* heap = malloc(sizeof(HEAP));//alocação de memória de um ponteiro do tipo definido heap.
     heap->comparador = compara;
     heap->N = n;
     heap->P = 0;
