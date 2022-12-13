@@ -7,9 +7,9 @@
 /*Definicao do tipo de funcao a ser utilizado para comparacao
 Esta funÃ§Ã£o recebe dois valores x e y e retorna
 
-1 : se x Ã© menor que y.
-0 : se x Ã© equivalente a y.
--1: se x Ã© maior que y na ordem.
+1 : se x é menor que y.
+0 : se x é equivalente a y.
+-1: se x é maior que y na ordem.
 
 */
 typedef int COMP(void* x, void* y);
@@ -34,12 +34,12 @@ Cria um heap vazio de tamanho n e com funcao de comparacao compara
 HEAP* HEAP_create(int n, COMP* compara);
 
 /**
-Adiciona o elemento newelem ao Heap, na posicao correta se for possÃ­vel
+Adiciona o elemento newelem ao Heap, na posicao correta se for possível
 ainda incluir o elemento (se existe espaco no vetor elems). Observe que 
 a estrutura deve respeitar a regra da heap, ou seja, para todo i temos que 
-x[i] Ã© menor que ou equivalente a x[2*i] e a x[2*i+1].
+x[i] é menor que ou equivalente a x[2*i] e a x[2*i+1].
 
-@param heap: o heap a ter o elemento incluÃ­do
+@param heap: o heap a ter o elemento incluído
 @param newelem: o elemento a ser adicionado
 */
 void HEAP_add(HEAP* heap, void* newelem);
