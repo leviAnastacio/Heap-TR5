@@ -11,13 +11,18 @@
   >Para que seja possível a execução e compilação do programa, é essencialmente importante que se
   possua o compilador gcc.
   
+  ## *Observação:*
+    O repositório conta com um arquivo main para realizar os testes das respectivas funções implementadas
+    na codificação, porém, vale ressaltar que o usuário tem total liberdade de elaborar um arquivo main que
+    atenda às suas respectivas necessidades.
+  
   ***1.Como baixar os arquivos anexados:***
      Basta copiar e colar o seguinte comando em seu terminal.
   ```
   git clone https://github.com/leviAnastacio/Heap-TR5.git
   ```
 ***2.Como compilar o programa:*** 
-  Basta abrir o terminal na pasta em que se encontra os arquivos, e digite o seguinte comando:
+  Basta abrir o terminal na pasta em que se encontra os arquivos, e digite os seguintes comandos:
   ```
   cd Heap-TR5
   gcc TR5_538536.c main_heap.c -o HEAP
