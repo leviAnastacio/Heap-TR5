@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "heap.h"
 
-//Função de criação "HEAP_create" para criar e inicializar o vetor do usuário.
+
 
 static int filho_esq(int index) {
     return (2*index) + 1;
@@ -18,7 +18,7 @@ static void heap_descida(void **elems, int P, COMP *comparador)
     int filhoe_pos = filho_esq(pai_pos);
     int filhod_pos = filho_dir(pai_pos);
     int menor = pai_pos; 
-    // O while vai ficar comparando os pais com os filhos, escolhendo o menor deles e realizando a troca.
+    // O laço while vai realizar a comparação dos elementos pais com os filhos, escolhendo o menor deles e realizando a troca de posições.
     while (pai_pos < P - 1)
     {
         if (filhoe_pos < P && comparador(elems[filhoe_pos], elems[pai_pos]) == -1)
@@ -49,89 +49,70 @@ static void heap_descida(void **elems, int P, COMP *comparador)
     }
 }
 
+//Função de criação e inicialização dos valores da heap.
 HEAP* HEAP_create(int n, COMP* compara)
 {
-    // Memória alocada para a HEAP com o malloc
-    HEAP* heap = malloc(sizeof(HEAP));
-    // Comparador recebe compara.
+    
+    HEAP* heap = malloc(sizeof(HEAP));//alocação de memória de um ponteiro do tipo definido HEAP.
     heap->comparador = compara;
-    // N (número máximo de elementos) recebe n (parâmetro).
     heap->N = n;
-    // P (número de elementos do vetor) recebe zero para inicializar.
     heap->P = 0;
-    // Aloca memória dos elentos.
-    heap->elems = malloc(n * sizeof(void *));
+    heap->elems = malloc(n * sizeof(void *));//alocação de memória dos elementos da heap.
     // Inicializando o vetor de 0 a n, vetor irá receber NULL.
-    for(int i = 0; i < n; i++)
-    {
+    for(int i = 0; i < n; i++){//Laço que inicializa todas as posições do vetor com o endereço nulo.
         heap->elems[i] = NULL;
     }
-    // Retorna a heap.
-    return heap;
+    return heap;//Retorna o ponteiro com o endereço do vetor de elementos da heap criado e inicializado.
 }
 
 // Função de adição e ordenação do vetor.
 void HEAP_add(HEAP* vetor, void* newelem)
 {
-    // Verificação do tamanho HEAP, o novo elemento será adicionado e o tamanho do vetor será aumentado.   
-    if(vetor->P < vetor->N)
-    {
-        // Verificando se a HEAP está vazia.
-        if(vetor->P == 0)
-        {
-            // Adição do novo elemento no começo da HEAP.
+     
+    if(vetor->P < vetor->N){//condicional que verifica se há espaço no vetor da heap.
+    
+        if(vetor->P == 0){//testa se o vetor esta vazio, em caso valido, a posicao inicial recebera o novo elemento passado por parametro.
             vetor->elems[0] = newelem;
-            vetor->P++;
+            vetor->P++;//incremento no valor do tamanho da heap.
         }
-        // Adição do novo elemento no final da HEAP e incrementação do vetor.
-        else
-        {
+        
+        else{//caso a heap não esteja vazia, o novo elemento será adicionado no final dela
             vetor->elems[vetor->P] = newelem;
-            vetor->P++;
+            vetor->P++;//incremento no valor do tamanho da heap.
              
-            for(int i = vetor->P-1; i>0; i--)
-            {
+            for(int i = vetor->P-1; i>0; i--){
                 // O "If" irá fazer operação de bubble up (subida na HEAP). 
-                if(vetor->comparador(vetor->elems[i], vetor->elems[i/2]) == -1)
-                {
-                    void* aux = vetor->elems[i];
-                    vetor->elems[i] = vetor->elems[i/2];
-                    vetor->elems[i/2] = aux;
+                if(vetor->comparador(vetor->elems[i], vetor->elems[i/2]) == -1){//condicional que realiza a comparação entre as posições da heap							
+                    void* aux = vetor->elems[i];				//em relação à sua propriedade matemática de ordenação e logo, após
+                    vetor->elems[i] = vetor->elems[i/2];			//os elementos e posições são reorganizados com a operação de bubble up
+                    vetor->elems[i/2] = aux;					//(subida na heap).
                 }
             }
         }
     }
 }
 
-// Função de remoção de elementos da HEAP.
 
-
+// Função de remoção de elementos da heap.
 void* HEAP_remove(HEAP* vetor)
 { 
-    // Verificando se há elementos na HEAP.
-    if(vetor->P < 1)
-    {
+    if(vetor->P < 1){//condicional que verifica se a heap está vazia, caso seja valido, retorna o endereço nulo.
+    
         return NULL;
     }
-    if(vetor->P == 1)
-    {
+    if(vetor->P == 1){//condicional que verifica caso a heap possua apenas um elemento, caso seja valido, será retornado o endereço desse elemento.
         vetor->P--;
         return vetor->elems[vetor->P];
     }
-	else 
-    {
-        // Criação de um ponteiro para apontar para o elemento a ser removido.
-        void* aux = vetor->elems[0];
-        // Ocorre a troca do último elemento com o primeiro.
-        vetor->elems[0] = vetor->elems [vetor->P-1]; 
+	else{//remoção do primeiro elemento da heap
+        void* aux = vetor->elems[0];//definição de um ponteiro auxiliar do tipo void, que recebe o valor e o endereço do primeiro elemento do vetor para assim ser realizada sua exclusão
+        vetor->elems[0] = vetor->elems [vetor->P-1];//Reorganização dos elementos que sobraram na heap após a remoção do primeiro elemento
         vetor->elems[vetor->P - 1] = aux;
+        vetor->P--;//decremento no valor do tamanho da heap.
         
-        // Decrementa o vetor.
-        vetor->P--;
-        //operação de descida
-        heap_descida(vetor->elems, vetor->P, vetor->comparador);
-        // Retorna o elemento removido.
-        return aux;
+	heap_descida(vetor->elems, vetor->P, vetor->comparador);//operação de descida (bubble down).
+        
+        return aux;//retorno do valor removido na heap.
     }
     
 }
