@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "heap.h"
 
-
+//Função de comparação dos elementos desejados para o teste, baseada na função de comparação do arquivo header.
 int myCOMP(void* x, void* y){
 	int ptx = *((int*)x);
 	int pty = *((int*)y);
