@@ -2,7 +2,8 @@
 
 ## *Descrição*
   Trabalho avaliativo que compõe parte da nota final da disciplina Laboratório de programação.
-  O código em si, consiste no desenvolvimento de uma estrutura de dados heap. O usuário, por meio de funções específicas na codificação, pode criar 
+  O código em si, é construído totalmente em linguagem C, e consiste no desenvolvimento de uma estrutura de dados 
+  heap. O usuário, por meio de funções específicas na codificação, pode criar 
   a heap, adicionar elementos em suas posições e, ademais, remover elementos por ele desejados. A
   codificação, conta, ainda, com uma função de comparação que depende exclusivamente de um arquivo
   com uma função main implementada para a execução de todos os comandos.
