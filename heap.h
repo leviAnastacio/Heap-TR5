@@ -14,7 +14,7 @@ Esta funÃ§Ã£o recebe dois valores x e y e retorna
 */
 typedef int COMP(void* x, void* y);
 
-//Uma Heap estatico. Os elementos do vetor estao colocadoo no vetor
+//Uma Heap estatico. Os elementos do vetor estao colocados no vetor
 //de acordo com a ordem indicada por comparador.
 typedef struct heap{
 	int N;//tamanho do vetor
@@ -29,8 +29,7 @@ Cria um heap vazio de tamanho n e com funcao de comparacao compara
 @param n: o tamanho do heap
 @param compara: a funcao de comparacao
 
-@return um ponteiro para uma estrutura HEAP, observe que este ponteiro ja
-deve apontar para a estrutura, ou seja, a alocacao de memoria deve ser feita nele.
+@return um ponteiro para uma estrutura HEAP.
 */
 HEAP* HEAP_create(int n, COMP* compara);
 
