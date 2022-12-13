@@ -19,10 +19,11 @@
 ***2.Como compilar o programa:*** 
   Basta abrir o terminal na pasta em que se encontra os arquivos, e digite o seguinte comando:
   ```
+  cd Heap-TR5
   gcc TR5_538536.c main_heap.c -o HEAP
   ```
   ***3.Como executar o programa:***
-    Logo após ter digitado o último comando, ainda no terminal, digite o próximo comando:  
+    Logo após ter digitado os últimos comandos, ainda no terminal, digite o próximo comando:  
     ```
     ./HEAP   
     ```
